@@ -1,19 +1,27 @@
-import React from 'react';
+import { Routes, Route } from "react-router-dom";
 
-function App() {
+// Layout (header/footer + <Outlet />)
+import Layout from "./components/Layout";
+
+// Pages
+import HomePage from "./pages/HomePage";
+import ProductPage from "./pages/ProductPage";
+import CartPage from "./pages/CartPage";
+import CheckoutSuccessPage from "./pages/CheckoutSuccessPage";
+import ContactPage from "./pages/ContactPage";
+import NotFound from "./pages/NotFound";
+
+export default function App() {
   return (
-    <div>
-      <h1>Product cart</h1>
-      <ul>
-        <li>Milk - 19.99</li>
-        <li>Bread - 23.99</li>
-        <li>Cheese - 40.99</li>
-        <li>Tomatoes - 14.99</li>
-        <li>Pancakes - 12.99</li>
-      </ul>
-    </div>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<HomePage />} />
+        <Route path="product/:id" element={<ProductPage />} />
+        <Route path="cart" element={<CartPage />} />
+        <Route path="checkout/success" element={<CheckoutSuccessPage />} />
+        <Route path="contact" element={<ContactPage />} />
+        <Route path="*" element={<NotFound />} />
+      </Route>
+    </Routes>
   );
 }
-
-export default App;
-
