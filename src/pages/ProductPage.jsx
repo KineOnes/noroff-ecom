@@ -1,13 +1,11 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchProductById } from "../api";
-import { useCart } from "../context/CartContext";
 
 export default function ProductPage() {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [status, setStatus] = useState("loading");
-  const { add } = useCart(); // <-- get add() from CartContext
 
   useEffect(() => {
     let isMounted = true;
@@ -64,7 +62,7 @@ export default function ProductPage() {
       </div>
 
       <button
-        onClick={() => add(product)} // ✅ add to cart via context
+        onClick={() => alert("Add to cart kommer i neste steg 😊")}
         style={{ padding: "0.6rem 1rem", borderRadius: 8 }}
       >
         Add to cart
@@ -77,8 +75,7 @@ export default function ProductPage() {
           <ul>
             {product.reviews.map((r, i) => (
               <li key={i}>
-                <strong>{r.username || r.author || "User"}:</strong>{" "}
-                {r.description || r.comment}
+                <strong>{r.username || r.author || "User"}:</strong> {r.description || r.comment}
               </li>
             ))}
           </ul>
