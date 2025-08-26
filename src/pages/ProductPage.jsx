@@ -1,11 +1,14 @@
+// src/pages/ProductPage.jsx
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchProductById } from "../api";
+import { useCart } from "../context/CartContext";
 
 export default function ProductPage() {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [status, setStatus] = useState("loading");
+  const { add } = useCart();
 
   useEffect(() => {
     let isMounted = true;
@@ -22,7 +25,9 @@ export default function ProductPage() {
         if (isMounted) setStatus("error");
       }
     })();
-    return () => (isMounted = false);
+    return () => {
+      isMounted = false;
+    };
   }, [id]);
 
   if (status === "loading") return <p>Laster…</p>;
@@ -38,23 +43,37 @@ export default function ProductPage() {
   const price = Number(product.price) || 0;
   const discounted = Number(product.discountedPrice ?? price);
   const hasDiscount = discounted < price;
-  const discountPct = hasDiscount ? Math.round(((price - discounted) / price) * 100) : 0;
+  const discountPct = hasDiscount
+    ? Math.round(((price - discounted) / price) * 100)
+    : 0;
 
   return (
     <>
       <h1>{title}</h1>
-      <img src={img} alt={product.image?.alt || title} style={{ maxWidth: 480, width: "100%" }} />
+      <img
+        src={img}
+        alt={product.image?.alt || title}
+        style={{ maxWidth: 480, width: "100%" }}
+      />
 
       <p style={{ marginTop: 12 }}>{product.description}</p>
 
       <div style={{ margin: "0.5rem 0 1rem" }}>
         {hasDiscount ? (
           <>
-            <span style={{ textDecoration: "line-through", opacity: 0.6, marginRight: 8 }}>
+            <span
+              style={{
+                textDecoration: "line-through",
+                opacity: 0.6,
+                marginRight: 8,
+              }}
+            >
               {price.toFixed(2)} NOK
             </span>
             <strong>{discounted.toFixed(2)} NOK</strong>
-            <span style={{ marginLeft: 8, color: "crimson" }}>−{discountPct}%</span>
+            <span style={{ marginLeft: 8, color: "crimson" }}>
+              −{discountPct}%
+            </span>
           </>
         ) : (
           <strong>{price.toFixed(2)} NOK</strong>
@@ -62,8 +81,15 @@ export default function ProductPage() {
       </div>
 
       <button
-        onClick={() => alert("Add to cart kommer i neste steg 😊")}
-        style={{ padding: "0.6rem 1rem", borderRadius: 8 }}
+        onClick={() => add(product)}
+        style={{
+          padding: "0.6rem 1rem",
+          borderRadius: 8,
+          border: "1px solid #222",
+          background: "#222",
+          color: "#fff",
+          cursor: "pointer",
+        }}
       >
         Add to cart
       </button>
@@ -75,7 +101,8 @@ export default function ProductPage() {
           <ul>
             {product.reviews.map((r, i) => (
               <li key={i}>
-                <strong>{r.username || r.author || "User"}:</strong> {r.description || r.comment}
+                <strong>{r.username || r.author || "User"}:</strong>{" "}
+                {r.description || r.comment}
               </li>
             ))}
           </ul>
