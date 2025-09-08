@@ -1,12 +1,13 @@
 .header {
     padding: 1rem 0;
     border-bottom: 1px solid #eee;
+    background: #fff;
   }
   
   .nav {
     display: flex;
-    gap: 1rem;
     align-items: center;
+    gap: 1rem;
   }
   
   .link {
@@ -19,6 +20,7 @@
     text-decoration: underline;
   }
   
+  /* pushes CartIcon to the right */
   .cart {
     margin-left: auto;
   }

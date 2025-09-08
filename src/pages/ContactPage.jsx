@@ -1,13 +1,5 @@
 import { useState, useMemo } from "react";
-
-/**
- * Krav fra brief:
- * - Full name: min 3 tegn, required
- * - Subject:   min 3 tegn, required
- * - Email:     gyldig e-post, required
- * - Body:      min 3 tegn, required
- * - Ved suksess: console.log(data)
- */
+import styles from "./ContactPage.module.css";
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -26,7 +18,6 @@ export default function ContactPage() {
     body: false,
   });
 
-  // Validering
   const errors = useMemo(() => {
     const e = {};
     if (!values.fullName || values.fullName.trim().length < 3) {
@@ -58,32 +49,24 @@ export default function ContactPage() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    // Marker alt som "touched" slik at feil vises
     setTouched({ fullName: true, subject: true, email: true, body: true });
 
-    if (!isValid) return; // ikke send hvis feil
+    if (!isValid) return;
 
-    // 👍 Kravet sier "console.log the data"
     console.log("Contact form submitted:", values);
 
-    // Valgfritt: liten tilbakemelding og reset
     alert("Takk! Skjemaet ble sendt.");
     setValues({ fullName: "", subject: "", email: "", body: "" });
     setTouched({ fullName: false, subject: false, email: false, body: false });
   }
 
-  // Enkle inline-stiler (du kan flytte til CSS senere)
-  const fieldStyle = { display: "grid", gap: 6, marginBottom: 14 };
-  const inputStyle = { padding: "0.6rem 0.8rem", borderRadius: 8, border: "1px solid #ccc" };
-  const errorStyle = { color: "crimson", fontSize: 14 };
-
   return (
     <>
       <h1>Contact</h1>
 
-      <form onSubmit={handleSubmit} noValidate style={{ maxWidth: 520 }}>
+      <form onSubmit={handleSubmit} noValidate className={styles.form}>
         {/* Full name */}
-        <div style={fieldStyle}>
+        <div className={styles.field}>
           <label htmlFor="fullName">Full name</label>
           <input
             id="fullName"
@@ -96,15 +79,17 @@ export default function ContactPage() {
             onBlur={handleBlur}
             aria-invalid={touched.fullName && !!errors.fullName}
             aria-describedby="err-fullName"
-            style={inputStyle}
+            className={styles.input}
           />
           {touched.fullName && errors.fullName && (
-            <span id="err-fullName" style={errorStyle}>{errors.fullName}</span>
+            <span id="err-fullName" className={styles.error}>
+              {errors.fullName}
+            </span>
           )}
         </div>
 
         {/* Subject */}
-        <div style={fieldStyle}>
+        <div className={styles.field}>
           <label htmlFor="subject">Subject</label>
           <input
             id="subject"
@@ -117,15 +102,17 @@ export default function ContactPage() {
             onBlur={handleBlur}
             aria-invalid={touched.subject && !!errors.subject}
             aria-describedby="err-subject"
-            style={inputStyle}
+            className={styles.input}
           />
           {touched.subject && errors.subject && (
-            <span id="err-subject" style={errorStyle}>{errors.subject}</span>
+            <span id="err-subject" className={styles.error}>
+              {errors.subject}
+            </span>
           )}
         </div>
 
         {/* Email */}
-        <div style={fieldStyle}>
+        <div className={styles.field}>
           <label htmlFor="email">Email</label>
           <input
             id="email"
@@ -137,15 +124,17 @@ export default function ContactPage() {
             onBlur={handleBlur}
             aria-invalid={touched.email && !!errors.email}
             aria-describedby="err-email"
-            style={inputStyle}
+            className={styles.input}
           />
           {touched.email && errors.email && (
-            <span id="err-email" style={errorStyle}>{errors.email}</span>
+            <span id="err-email" className={styles.error}>
+              {errors.email}
+            </span>
           )}
         </div>
 
         {/* Body */}
-        <div style={fieldStyle}>
+        <div className={styles.field}>
           <label htmlFor="body">Message</label>
           <textarea
             id="body"
@@ -158,24 +147,19 @@ export default function ContactPage() {
             onBlur={handleBlur}
             aria-invalid={touched.body && !!errors.body}
             aria-describedby="err-body"
-            style={{ ...inputStyle, resize: "vertical" }}
+            className={styles.textarea}
           />
           {touched.body && errors.body && (
-            <span id="err-body" style={errorStyle}>{errors.body}</span>
+            <span id="err-body" className={styles.error}>
+              {errors.body}
+            </span>
           )}
         </div>
 
         <button
           type="submit"
+          className={`${styles.btn} ${isValid ? styles.btnPrimary : styles.btnDisabled}`}
           disabled={!isValid}
-          style={{
-            padding: "0.7rem 1.1rem",
-            borderRadius: 10,
-            border: "1px solid #222",
-            background: isValid ? "#222" : "#999",
-            color: "white",
-            cursor: isValid ? "pointer" : "not-allowed",
-          }}
         >
           Send
         </button>

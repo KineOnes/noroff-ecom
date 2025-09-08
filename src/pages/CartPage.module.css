@@ -1,0 +1,148 @@
+.wrap {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+  
+  .title {
+    margin: 0 0 1rem;
+  }
+  
+  .empty {
+    padding: 1rem;
+    border: 1px dashed #e5e7eb;
+    border-radius: 12px;
+    color: #6b7280;
+  }
+  
+  /* List */
+  .list {
+    display: grid;
+    gap: 0.75rem;
+    margin: 1rem 0;
+  }
+  
+  .item {
+    display: grid;
+    grid-template-columns: 72px 1fr auto;
+    gap: 0.75rem;
+    align-items: center;
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    padding: 0.6rem;
+    box-shadow: 0 6px 16px rgba(0,0,0,.04);
+  }
+  
+  .thumb {
+    width: 72px;
+    height: 72px;
+    object-fit: cover;
+    border-radius: 10px;
+    background: #f8fafc;
+    border: 1px solid #eef2f7;
+  }
+  
+  .meta {
+    display: grid;
+    gap: 0.25rem;
+  }
+  
+  .name {
+    font-weight: 600;
+  }
+  
+  .priceLine {
+    color: #6b7280;
+    font-size: 0.95rem;
+  }
+  
+  /* Qty controls */
+  .controls {
+    display: grid;
+    gap: 0.35rem;
+    justify-items: end;
+  }
+  
+  .qtyRow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 999px;
+    padding: 0.2rem 0.4rem;
+    background: #fff;
+  }
+  
+  .iconBtn {
+    width: 28px;
+    height: 28px;
+    display: grid;
+    place-items: center;
+    border: none;
+    border-radius: 999px;
+    background: #f3f4f6;
+    cursor: pointer;
+  }
+  
+  .iconBtn:hover { background: #e5e7eb; }
+  
+  .remove {
+    border: none;
+    background: transparent;
+    color: #ef4444;
+    cursor: pointer;
+    font-size: 0.95rem;
+  }
+  
+  /* Summary */
+  .summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid #eee;
+  }
+  
+  .total {
+    font-weight: 700;
+    font-size: 1.05rem;
+  }
+  
+  .actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    padding: .6rem 1rem;
+    border-radius: 10px;
+    border: 1px solid #2b6478;
+    color: #2b6478;
+    background: transparent;
+    cursor: pointer;
+  }
+  .btn:hover { background: #f0f6f7; }
+  
+  .primary {
+    background: #2b6478;
+    color: #fff;
+    border-color: #2b6478;
+  }
+  .primary:hover { filter: brightness(0.97); }
+  
+  @media (max-width: 640px) {
+    .item {
+      grid-template-columns: 56px 1fr;
+    }
+    .controls {
+      justify-items: start;
+    }
+  }
+  

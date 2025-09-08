@@ -1,0 +1,43 @@
+.form {
+    max-width: 520px;
+  }
+  
+  .field {
+    display: grid;
+    gap: 6px;
+    margin-bottom: 14px;
+  }
+  
+  .input,
+  .textarea {
+    padding: 0.6rem 0.8rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+  }
+  
+  .textarea {
+    resize: vertical;
+  }
+  
+  .error {
+    color: crimson;
+    font-size: 14px;
+  }
+  
+  .btn {
+    padding: 0.7rem 1.1rem;
+    border-radius: 10px;
+    border: 1px solid #222;
+    color: white;
+  }
+  
+  .btnPrimary {
+    background: #222;
+    cursor: pointer;
+  }
+  
+  .btnDisabled {
+    background: #999;
+    cursor: not-allowed;
+  }
+  
