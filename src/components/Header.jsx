@@ -1,14 +1,17 @@
 import { Link } from "react-router-dom";
 import CartIcon from "./CartIcon";
+import styles from "./Header.module.css"; // connect CSS module
 
 export default function Header() {
   return (
-    <header style={{ padding: "1rem 0", borderBottom: "1px solid #eee" }}>
-      <nav style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
-        <Link to="/">Home</Link>
-        <Link to="/contact">Contact</Link>
-        <Link to="/cart">Cart</Link>
-        <CartIcon />
+    <header className={styles.header}>
+      <nav className={styles.nav}>
+        <Link to="/" className={styles.link}>Home</Link>
+        <Link to="/contact" className={styles.link}>Contact</Link>
+        <Link to="/cart" className={styles.link}>Cart</Link>
+        <div className={styles.cart}>
+          <CartIcon />
+        </div>
       </nav>
     </header>
   );
