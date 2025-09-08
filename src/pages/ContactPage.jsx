@@ -160,12 +160,15 @@ export default function ContactPage() {
         </div>
 
         <button
-          type="submit"
-          className={`${styles.btn} ${isValid ? styles.btnPrimary : styles.btnDisabled}`}
-          disabled={!isValid}
-        >
-          Send
-        </button>
+            type="submit"
+            disabled={!isValid}
+            className={`${buttonStyles.btn} ${
+                isValid ? buttonStyles.btnPrimary : buttonStyles.btnDisabled
+             }`}
+                >
+                Send
+                </button>
+
       </form>
     </>
   );
