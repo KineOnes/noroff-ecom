@@ -1,5 +1,8 @@
+import buttonStyles from "../components/Button.module.css";
 import { useState, useMemo } from "react";
 import styles from "./ContactPage.module.css";
+
+
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -167,3 +170,4 @@ export default function ContactPage() {
     </>
   );
 }
+
