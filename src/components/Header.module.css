@@ -1,27 +1,61 @@
+/* src/components/Header.module.css */
+
 .header {
-    padding: 1rem 0;
-    border-bottom: 1px solid #eee;
     background: #fff;
+    border-bottom: 1px solid #eee;
   }
   
+  /* centers content and gives side padding */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;          /* more side margin */
+    height: 64px;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+  
+  /* optional brand/title on the left */
+  .brand {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #111;
+    text-decoration: none;
+  }
+  
+  /* nav links row */
   .nav {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 1.5rem;
   }
   
+  /* push everything after nav (CartIcon) to the right */
+  .spacer {
+    margin-left: auto;
+  }
+  
+  /* link styling */
   .link {
     color: #222;
     text-decoration: none;
     font-weight: 500;
+    letter-spacing: .2px;
   }
   
   .link:hover {
     text-decoration: underline;
   }
   
-  /* pushes CartIcon to the right */
-  .cart {
-    margin-left: auto;
+  /* small screens: add a bit more breathing room */
+  @media (max-width: 640px) {
+    .container {
+      padding: 0 1rem;
+      gap: 1rem;
+    }
+    .nav {
+      gap: 1rem;
+    }
   }
   

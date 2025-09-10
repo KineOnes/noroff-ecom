@@ -5,15 +5,20 @@ import styles from "./Header.module.css";
 export default function Header() {
   return (
     <header className={styles.header}>
-      <div className="container">{/* optional if you use a global container */}
+      <div className={styles.container}>
+        {/* Optional brand/logo text */}
+        <Link to="/" className={styles.brand}>ItemHub</Link>
+
         <nav className={styles.nav}>
           <Link to="/" className={styles.link}>Home</Link>
           <Link to="/contact" className={styles.link}>Contact</Link>
           <Link to="/cart" className={styles.link}>Cart</Link>
-          <div className={styles.cart}>
-            <CartIcon />
-          </div>
         </nav>
+
+        {/* pushes CartIcon to the far right */}
+        <div className={styles.spacer} />
+
+        <CartIcon />
       </div>
     </header>
   );
