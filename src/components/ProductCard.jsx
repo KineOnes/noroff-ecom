@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import buttonStyles from "./Button.module.css";
 
 export default function ProductCard({ product }) {
   // Prøv å lese felter fleksibelt, i tilfelle API-struktur varierer litt
@@ -35,7 +36,13 @@ export default function ProductCard({ product }) {
           )}
         </div>
 
-        <Link to={`/product/${product.id}`}>View product</Link>
+        <Link
+  to={`/product/${product.id}`}
+  className={`${buttonStyles.btn} ${buttonStyles.btnPrimary}`}
+>
+  View product
+</Link>
+
       </div>
     </article>
   );

@@ -1,36 +1,48 @@
+/* src/components/Button.module.css */
+
 .btn {
-    padding: 0.7rem 1.1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  
+    padding: 0.6rem 1rem;
     border-radius: 10px;
-    border: 1px solid #222;
     font-weight: 500;
-    transition: background 0.2s ease, transform 0.1s ease;
+    cursor: pointer;
+  
+    text-decoration: none; /* works for <a> and <Link> */
+    font-size: 0.95rem;
   }
   
+  /* Primary (green fill, white text) */
   .btnPrimary {
-    background: #222;
-    color: white;
-    cursor: pointer;
+    background: #2b6478;
+    color: #fff;
+    border: 1px solid #2b6478;
   }
   
   .btnPrimary:hover {
-    background: #333;
-    transform: translateY(-2px);
+    background: #244f5e;
   }
   
+  /* Secondary (outline) */
   .btnSecondary {
-    background: #f5f5f5;
-    color: #222;
-    cursor: pointer;
+    border: 1px solid #2b6478;
+    background: transparent;
+    color: #2b6478;
   }
   
   .btnSecondary:hover {
-    background: #eaeaea;
-    transform: translateY(-2px);
+    background: #2b6478;
+    color: #fff;
   }
   
+  /* Disabled */
   .btnDisabled {
     background: #999;
-    color: white;
+    border: 1px solid #999;
+    color: #fff;
     cursor: not-allowed;
   }
   

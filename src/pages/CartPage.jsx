@@ -2,6 +2,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import styles from "./CartPage.module.css";
+import buttonStyles from "../components/Button.module.css";
+
 
 export default function CartPage() {
   const { cart, add, decrement, remove, total, clear } = useCart();
@@ -18,7 +20,7 @@ export default function CartPage() {
 
       {cart.length === 0 ? (
         <div className={styles.empty}>
-          Cart is empty. <Link to="/">Go shopping</Link>
+          Cart is empty. <Link to="/" className={`${buttonStyles.btn} ${buttonStyles.btnPrimary}`}>Go shopping</Link>
         </div>
       ) : (
         <>

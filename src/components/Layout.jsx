@@ -1,15 +1,16 @@
+import "../App.css";
 import { Outlet } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
 
 export default function Layout() {
   return (
-    <>
+    <div className="appWrapper">
       <Header />
-      <main style={{ maxWidth: 1000, margin: "0 auto", padding: "1rem" }}>
+      <main className="main container">
         <Outlet />
       </main>
       <Footer />
-    </>
+    </div>
   );
 }
