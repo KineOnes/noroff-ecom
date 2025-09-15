@@ -3,13 +3,17 @@
 .header {
     background: #fff;
     border-bottom: 1px solid #eee;
+  
+    /* 👇 keep it always visible */
+    position: sticky;   /* sticks relative to parent scroll */
+    top: 0;
+    z-index: 1000;      /* make sure it stays above content */
   }
   
-  /* centers content and gives side padding */
   .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 2rem;          /* more side margin */
+    padding: 0 2rem;          /* side margins */
     height: 64px;
     display: flex;
     align-items: center;
@@ -48,7 +52,7 @@
     text-decoration: underline;
   }
   
-  /* small screens: add a bit more breathing room */
+  /* small screens */
   @media (max-width: 640px) {
     .container {
       padding: 0 1rem;
