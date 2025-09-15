@@ -61,21 +61,26 @@
   
   .btnRow {
     display: flex;
-    gap: .75rem;
+    gap: 1rem;
     flex-wrap: wrap;
+    align-items: center;    /* hindrer stretching */
+    justify-content: flex-start;
   }
+  
   
   .btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: .5rem;
-    padding: .6rem 1rem;
+    padding: 0.6rem 1.2rem;   /* kontrollert høyde og bredde */
     border-radius: 10px;
     border: 1px solid #2b6478;
     color: #2b6478;
     background: transparent;
     cursor: pointer;
+    min-width: 120px;         /* gjør knappene like brede */
+    height: auto;             /* unngå stretching */
   }
   
   .btn:hover { background: #f0f6f7; }
