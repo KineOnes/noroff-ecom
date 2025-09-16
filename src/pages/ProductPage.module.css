@@ -81,6 +81,8 @@
     cursor: pointer;
     min-width: 120px;         /* gjør knappene like brede */
     height: auto;             /* unngå stretching */
+    text-decoration: none;  /* no underscore*/
+    color: inherit;  
   }
   
   .btn:hover { background: #f0f6f7; }

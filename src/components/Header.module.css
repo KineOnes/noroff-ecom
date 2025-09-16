@@ -3,44 +3,51 @@
 .header {
     background: #fff;
     border-bottom: 1px solid #eee;
-  
-    /* 👇 keep it always visible */
-    position: sticky;   /* sticks relative to parent scroll */
+    position: sticky;   /* always visible */
     top: 0;
-    z-index: 1000;      /* make sure it stays above content */
+    z-index: 1000;
   }
   
-  .container {
+  /* grid layout: left nav | center logo | right cart */
+  .containerGrid {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 2rem;          /* side margins */
+    padding: 0 2rem;
     height: 64px;
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
     align-items: center;
-    gap: 2rem;
+    gap: 1rem;
   }
   
-  /* optional brand/title on the left */
-  .brand {
-    font-weight: 700;
-    font-size: 1.1rem;
-    color: #111;
-    text-decoration: none;
-  }
-  
-  /* nav links row */
-  .nav {
+  /* left nav */
+  .navLeft {
     display: flex;
     align-items: center;
     gap: 1.5rem;
   }
   
-  /* push everything after nav (CartIcon) to the right */
-  .spacer {
-    margin-left: auto;
+  /* centered brand/logo */
+  .brandCenter {
+    justify-self: center;
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
   }
   
-  /* link styling */
+  .logo {
+    display: block;
+    height: 120px;     /* adjust size here */
+    width: auto;
+    object-fit: contain;
+  }
+  
+  /* right (cart icon) */
+  .right {
+    justify-self: end;
+  }
+  
+  /* nav links */
   .link {
     color: #222;
     text-decoration: none;
@@ -54,12 +61,15 @@
   
   /* small screens */
   @media (max-width: 640px) {
-    .container {
+    .containerGrid {
       padding: 0 1rem;
+      gap: .75rem;
+    }
+    .navLeft {
       gap: 1rem;
     }
-    .nav {
-      gap: 1rem;
+    .logo {
+      height: 74px;
     }
   }
   
