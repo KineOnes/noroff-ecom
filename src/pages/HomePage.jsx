@@ -47,7 +47,7 @@ export default function HomePage() {
         <input
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="Søk etter produkt…"
+          placeholder="Search for product…"
           className={styles.searchInput}
         />
         {query && filtered.length > 0 && (
