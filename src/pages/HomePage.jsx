@@ -35,8 +35,8 @@ export default function HomePage() {
       .slice(0, 8); // topp 8 forslag
   }, [products, query]);
 
-  if (status === "loading") return <p>Laster produkter…</p>;
-  if (status === "error") return <p>Kunne ikke hente produkter. Prøv igjen.</p>;
+  if (status === "loading") return <p>Loading products…</p>;
+  if (status === "error") return <p>Could not load products. Try again.</p>;
 
   return (
     <div className={styles.container}>

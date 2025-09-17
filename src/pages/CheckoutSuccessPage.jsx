@@ -15,9 +15,9 @@ export default function CheckoutSuccessPage() {
   return (
     <>
       <h1>Order successful</h1>
-      <p>Takk for bestillingen! Handlekurven er tømt.</p>
+      <p>Thank you for placing your order! The cart is empty.</p>
       <Link to="/" className={`${buttonStyles.btn} ${buttonStyles.btnPrimary}`}>
-        Tilbake til butikken
+        Back to products
       </Link>
     </>
   );
