@@ -32,7 +32,7 @@ export default function HomePage() {
     const q = query.toLowerCase();
     return products
       .filter((p) => (p.title || p.name || "").toLowerCase().includes(q))
-      .slice(0, 8); // topp 8 forslag
+      .slice(0, 8); // topp 8 forslag. Maximum 8 suggestions
   }, [products, query]);
 
   if (status === "loading") return <p>Loading products…</p>;
