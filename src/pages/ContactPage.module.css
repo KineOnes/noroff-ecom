@@ -41,3 +41,13 @@
     cursor: not-allowed;
   }
   
+  .success {
+    margin-top: 1rem;
+    padding: 0.75rem 1rem;
+    background-color: #d4edda; /* lys grønn */
+    color: #155724;           /* mørk grønn */
+    border: 1px solid #c3e6cb;
+    border-radius: 6px;
+    font-size: 0.95rem;
+  }
+  

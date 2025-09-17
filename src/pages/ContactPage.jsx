@@ -2,8 +2,6 @@ import buttonStyles from "../components/Button.module.css";
 import { useState, useMemo } from "react";
 import styles from "./ContactPage.module.css";
 
-
-
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export default function ContactPage() {
@@ -20,6 +18,8 @@ export default function ContactPage() {
     email: false,
     body: false,
   });
+
+  const [success, setSuccess] = useState(""); // 👈 success message state
 
   const errors = useMemo(() => {
     const e = {};
@@ -58,9 +58,14 @@ export default function ContactPage() {
 
     console.log("Contact form submitted:", values);
 
-    alert("Thank you! Your message has been sent");
+    // 👇 show success message
+    setSuccess("✅ Thank you! Your message has been sent.");
+
     setValues({ fullName: "", subject: "", email: "", body: "" });
     setTouched({ fullName: false, subject: false, email: false, body: false });
+
+    // Auto-hide message after 5s
+    setTimeout(() => setSuccess(""), 5000);
   }
 
   return (
@@ -160,17 +165,18 @@ export default function ContactPage() {
         </div>
 
         <button
-            type="submit"
-            disabled={!isValid}
-            className={`${buttonStyles.btn} ${
-                isValid ? buttonStyles.btnPrimary : buttonStyles.btnDisabled
-             }`}
-                >
-                Send
-                </button>
-
+          type="submit"
+          disabled={!isValid}
+          className={`${buttonStyles.btn} ${
+            isValid ? buttonStyles.btnPrimary : buttonStyles.btnDisabled
+          }`}
+        >
+          Send
+        </button>
       </form>
+
+      {/* 👇 success message below form */}
+      {success && <div className={styles.success}>{success}</div>}
     </>
   );
 }
-
