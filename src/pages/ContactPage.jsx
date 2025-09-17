@@ -58,7 +58,7 @@ export default function ContactPage() {
 
     console.log("Contact form submitted:", values);
 
-    alert("Takk! Skjemaet ble sendt.");
+    alert("Thank you! Your message has been sent");
     setValues({ fullName: "", subject: "", email: "", body: "" });
     setTouched({ fullName: false, subject: false, email: false, body: false });
   }
