@@ -11,7 +11,7 @@ export default function CartPage() {
 
   function checkout() {
     // Vi lar Clearing skje på success-siden (du har allerede clear() der).
-    navigate("/checkout/success");
+    navigate("/checkout");
   }
 
   return (
