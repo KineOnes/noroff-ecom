@@ -1,4 +1,12 @@
-import { createContext, useContext, useEffect, useMemo, useReducer } from "react";
+// src/context/CartContext.jsx
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useMemo,
+  useReducer,
+  useCallback,
+} from "react";
 
 const CartContext = createContext();
 
@@ -43,12 +51,12 @@ export function CartProvider({ children }) {
     }
   });
 
-  // lagre i localStorage
+  // Persist to localStorage
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(cart));
   }, [cart]);
 
-  // avledet data
+  // Derived data
   const count = useMemo(
     () => cart.reduce((sum, item) => sum + item.quantity, 0),
     [cart]
@@ -58,28 +66,40 @@ export function CartProvider({ children }) {
     [cart]
   );
 
-  const value = {
-    cart,
-    count,
-    total,
-    add: (product) => {
-      // vi bruker alltid discountedPrice om den finnes
-      const unitPrice =
-        typeof product.discountedPrice === "number"
-          ? product.discountedPrice
-          : product.price;
-      const safe = {
-        id: product.id,
-        title: product.title,
-        image: product.image?.url || product.imageUrl || "",
-        unitPrice,
-      };
-      dispatch({ type: "ADD", payload: safe });
-    },
-    decrement: (id) => dispatch({ type: "DECREMENT", payload: id }),
-    remove: (id) => dispatch({ type: "REMOVE", payload: id }),
-    clear: () => dispatch({ type: "CLEAR" }),
-  };
+  // 👇 Memoize action creators so their references are stable
+  const add = useCallback((product) => {
+    const unitPrice =
+      typeof product.discountedPrice === "number"
+        ? product.discountedPrice
+        : product.price;
+
+    const safe = {
+      id: product.id,
+      title: product.title,
+      image: product.image?.url || product.imageUrl || "",
+      unitPrice,
+    };
+
+    dispatch({ type: "ADD", payload: safe });
+  }, []);
+
+  const decrement = useCallback((id) => {
+    dispatch({ type: "DECREMENT", payload: id });
+  }, []);
+
+  const remove = useCallback((id) => {
+    dispatch({ type: "REMOVE", payload: id });
+  }, []);
+
+  const clear = useCallback(() => {
+    dispatch({ type: "CLEAR" });
+  }, []);
+
+  // 👇 Memoize the context value object
+  const value = useMemo(
+    () => ({ cart, count, total, add, decrement, remove, clear }),
+    [cart, count, total, add, decrement, remove, clear]
+  );
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 }
