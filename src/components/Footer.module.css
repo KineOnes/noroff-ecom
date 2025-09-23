@@ -9,7 +9,7 @@
   .inner {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 2rem;     /* matcher header */
+    padding: 0 2rem;     /* matching header */
     display: flex;
     align-items: center;
     justify-content: space-between;

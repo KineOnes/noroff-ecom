@@ -1,14 +1,14 @@
 // src/pages/CheckoutPage.jsx
 import { Link, useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
-import styles from "./CartPage.module.css";               // gjenbruker layout-stilene dine
+import styles from "./CartPage.module.css";               // re-use my layout-styles
 import buttonStyles from "../components/Button.module.css";
 
 export default function CheckoutPage() {
   const { cart, total } = useCart();
   const navigate = useNavigate();
 
-  // Ikke tøm cart her. Det gjøres på success-siden.
+  // Do not empty cart here, it empty on success page.
   function confirmOrder() {
     navigate("/checkout/success");
   }
@@ -29,7 +29,7 @@ export default function CheckoutPage() {
     <div className={styles.wrap}>
       <h1 className={styles.title}>Checkout</h1>
 
-      {/* Les-visning av varene (uten +/-) */}
+      {/* Read-only view of items (no +/- controls) */}
       <div className={styles.list}>
         {cart.map((item) => (
           <article key={item.id} className={styles.item}>

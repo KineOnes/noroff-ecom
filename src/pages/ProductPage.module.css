@@ -73,14 +73,14 @@
     align-items: center;
     justify-content: center;
     gap: .5rem;
-    padding: 0.6rem 1.2rem;   /* kontrollert høyde og bredde */
+    padding: 0.6rem 1.2rem;  
     border-radius: 10px;
     border: 1px solid #2b6478;
     color: #2b6478;
     background: transparent;
     cursor: pointer;
-    min-width: 120px;         /* gjør knappene like brede */
-    height: auto;             /* unngå stretching */
+    min-width: 120px;         /* make btns the same width */
+    height: auto;             /* avoid stretching */
     text-decoration: none;  /* no underscore*/
     color: inherit;  
   }

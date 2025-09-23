@@ -95,7 +95,7 @@ export function CartProvider({ children }) {
     dispatch({ type: "CLEAR" });
   }, []);
 
-  // 👇 Memoize the context value object
+  // 👇 Memoize the context value object. Had issue with infinite loop, now solved.
   const value = useMemo(
     () => ({ cart, count, total, add, decrement, remove, clear }),
     [cart, count, total, add, decrement, remove, clear]

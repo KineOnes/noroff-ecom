@@ -10,7 +10,7 @@ export default function CartPage() {
   const navigate = useNavigate();
 
   function checkout() {
-    // Vi lar Clearing skje på success-siden (du har allerede clear() der).
+    // Clearing will happen on success page, since clear() is alreade there.
     navigate("/checkout");
   }
 

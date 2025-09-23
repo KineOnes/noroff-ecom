@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import buttonStyles from "./Button.module.css";
 
 export default function ProductCard({ product }) {
-  // Prøv å lese felter fleksibelt, i tilfelle API-struktur varierer litt
   const img =
     product.image?.url ||
     product.imageUrl ||
