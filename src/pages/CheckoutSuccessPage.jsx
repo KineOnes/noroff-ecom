@@ -10,9 +10,10 @@ export default function CheckoutSuccessPage() {
 
   useEffect(() => {
     clear(); // clear once on mount
-  }, []); // 👈 empty dependency array prevents infinite loop
+  }, []); // 👈 empty dependency array prevents infinite loop! 
 
   return (
+
     <>
       <h1>Order successful</h1>
       <p>Thank you for placing your order! The cart is empty.</p>
