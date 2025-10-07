@@ -5,7 +5,7 @@ export default function Footer() {
     <footer className={styles.footer}>
       <div className={`container ${styles.inner}`}>
         <span className={styles.muted}>
-          © {new Date().getFullYear()} My Store
+          © {new Date().getFullYear()} Sofia Select
         </span>
         <span>All prices incl. VAT</span>
       </div>
