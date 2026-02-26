@@ -20,6 +20,17 @@ Users can browse products, search with a look-ahead search bar, view individual 
 - Data from Noroff API using fetch  
 - React Router for page navigation
 
+## Screenshot
+
+![Sofia Select Homepage](./images/sofiasselect-home.png)
+
+## Project Description
+
+The goal of this project was to build a modern React-based eCommerce application using the Noroff Online Shop API. 
+
+The application demonstrates component structure, routing, state management using Context API, and form validation.
+
+
 ## ⚙️ Technologies
 - React (Create React App)
 - React Router
@@ -27,7 +38,16 @@ Users can browse products, search with a look-ahead search bar, view individual 
 - CSS Modules / plain CSS
 - Deployed on Netlify
 
-## ▶️ Run locally
+## Student Reflection
+
+This project helped me understand API integration, state management using Context API, and how to structure a scalable React application. 
+
+Working with dynamic data and routing improved my understanding of real-world frontend development.
+
+
+## Installation
 ```bash
+git clone https://github.com/KineOnes/noroff-ecom
+cd noroff-ecom
 npm install
 npm start
