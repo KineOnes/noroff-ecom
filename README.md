@@ -1,7 +1,7 @@
 # Sofia Select – React eCommerce Store
 
 Deployed: <https://sofiaselect.netlify.app/>  
-GitHub: <https://github.com/KineOnes/noroff-ecom/tree/main>  
+GitHub: <https://github.com/KineOnes/noroff-ecom>  
 API: https://v2.api.noroff.dev/online-shop
 
 ## 🎯 About
